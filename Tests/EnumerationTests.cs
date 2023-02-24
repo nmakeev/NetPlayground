@@ -1,6 +1,8 @@
 ﻿using BenchmarkDotNet.Attributes;
+using NetPlayground.Tests.Model;
+using Playground;
 
-namespace Playground;
+namespace NetPlayground.Tests;
 
 public class EnumerationTests
 {

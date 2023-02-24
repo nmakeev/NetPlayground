@@ -1,4 +1,4 @@
-﻿namespace Playground;
+﻿namespace NetPlayground.Tests.Model;
 
 public class ClassEntry
 {
