@@ -10,7 +10,7 @@ using NetPlayground.Tests;
 | SumWithForeachStruct | 155.12 us | 0.335 us | 0.297 us |
 |     SumWithLinqClass | 991.13 us | 5.919 us | 5.537 us |
 |    SumWithLinqStruct | 874.54 us | 0.894 us | 0.698 us |
-*/
+ */
 //BenchmarkRunner.Run<EnumerationTests>();
 
 /*
@@ -19,5 +19,10 @@ using NetPlayground.Tests;
 |      GetFirstByIndex |  0.2317 ns | 0.0151 ns | 0.0141 ns |
 | GetFirstByEnumerator | 12.1287 ns | 0.2712 ns | 0.3330 ns |
 |       GetFirstByLinq |  8.3590 ns | 0.0363 ns | 0.0303 ns | 
-*/
-BenchmarkRunner.Run<FirstOrDefaultTests>();
+ */
+//BenchmarkRunner.Run<FirstOrDefaultTests>();
+
+/*
+ 
+ */
+BenchmarkRunner.Run<PoolTests>();

@@ -12,4 +12,12 @@ public static class Helper
 
         return result;
     }
+    
+    public static void FillList(List<int> list, Random random, int count)
+    {
+        for (var i = 0; i < count; i++)
+        {
+            list.Add(random.Next());
+        }
+    }
 }
