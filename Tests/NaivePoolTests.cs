@@ -3,7 +3,7 @@ using NetPlayground.Tests.Model;
 
 namespace NetPlayground.Tests;
 
-public class PoolTests
+public class NaivePoolTests
 {
     private const int EntriesCount = 10000;
     private Random _random;

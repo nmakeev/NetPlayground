@@ -23,6 +23,10 @@ using NetPlayground.Tests;
 //BenchmarkRunner.Run<FirstOrDefaultTests>();
 
 /*
- 
+|                        Method |          Mean |         Error |        StdDev |
+|------------------------------ |--------------:|--------------:|--------------:|
+|                SumWithNewList |      38.35 us |      0.207 us |      0.183 us |
+|           SumWithListFromPool | 157,796.15 us | 15,340.665 us | 45,232.296 us |
+| SumWithListFromPoolTryFinally | 157,647.85 us | 15,877.483 us | 46,815.117 us |
  */
-BenchmarkRunner.Run<PoolTests>();
+//BenchmarkRunner.Run<NaivePoolTests>();
