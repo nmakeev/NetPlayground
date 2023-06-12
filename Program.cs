@@ -30,3 +30,12 @@ using NetPlayground.Tests;
 | SumWithListFromPoolTryFinally | 157,647.85 us | 15,877.483 us | 46,815.117 us |
  */
 //BenchmarkRunner.Run<NaivePoolTests>();
+
+/*
+|         Method |      Mean |     Error |    StdDev | Ratio | RatioSD |   Gen0 | Allocated | Alloc Ratio |
+|--------------- |----------:|----------:|----------:|------:|--------:|-------:|----------:|------------:|
+| GenerateRandom |  8.501 ns | 0.0838 ns | 0.0784 ns |  1.00 |    0.00 |      - |         - |          NA |
+|   TestToString | 29.426 ns | 0.2643 ns | 0.2473 ns |  3.46 |    0.03 | 0.0019 |      24 B |          NA |
+|    TestConvert | 18.026 ns | 0.1717 ns | 0.1522 ns |  2.12 |    0.02 |      - |         - |          NA | 
+ */
+//BenchmarkRunner.Run<EnumStringVsBoxTests>();
