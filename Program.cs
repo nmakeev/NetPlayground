@@ -52,4 +52,16 @@ using NetPlayground.Tests;
 |       SelectFromList |                    ? | Syste(...)Item] [59] | 1,304.24 ns |  25.749 ns |  51.424 ns | 1,315.20 ns |         - |
 |       SelectFromList |                    ? | Syste(...)Item] [59] | 5,051.22 ns | 130.427 ns | 384.568 ns | 5,244.63 ns |         - |
  */
-BenchmarkRunner.Run<ListVsDictionaryTest>();
+//BenchmarkRunner.Run<ListVsDictionaryTest>();
+
+/*
+|                    Method |               value |                pair1 |                pair2 |                pair3 |         formatValues |       Mean |    Error |    StdDev |     Median | Ratio | RatioSD |   Gen0 | Allocated | Alloc Ratio |
+|-------------------------- |-------------------- |--------------------- |--------------------- |--------------------- |--------------------- |-----------:|---------:|----------:|-----------:|------:|--------:|-------:|----------:|------------:|
+|   ApplyFormat_WithReplace | Your(...)rk}. [160] | Local(...)cPair [31] | Local(...)cPair [31] | Local(...)cPair [31] |                    ? |   263.7 ns | 15.04 ns |  44.35 ns |   286.5 ns |     ? |       ? | 0.0880 |    1104 B |           ? |
+| ApplyFormat_PreparedPairs | Your(...)rk}. [160] | Local(...)cPair [31] | Local(...)cPair [31] | Local(...)cPair [31] |                    ? |   195.4 ns | 15.87 ns |  46.78 ns |   221.0 ns |     ? |       ? | 0.0732 |     920 B |           ? |
+| ApplyFormat_StringBuilder | Your(...)rk}. [160] | Local(...)cPair [31] | Local(...)cPair [31] | Local(...)cPair [31] |                    ? | 2,293.3 ns | 45.72 ns | 123.60 ns | 2,333.3 ns |     ? |       ? | 0.0534 |     680 B |           ? |
+|                           |                     |                      |                      |                      |                      |            |          |           |            |       |         |        |           |             
+|
+|               ApplyFormat | Your(...)rk}. [160] |                    ? |                    ? |                    ? | Syste(...)ring] [68] |   751.6 ns | 63.87 ns | 188.32 ns |   797.1 ns |  1.00 |    0.00 | 0.1211 |    1528 B |        1.00 |
+ */
+//BenchmarkRunner.Run<LocalizationManagerTest>();
