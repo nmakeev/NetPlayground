@@ -39,3 +39,17 @@ using NetPlayground.Tests;
 |    TestConvert | 18.026 ns | 0.1717 ns | 0.1522 ns |  2.12 |    0.02 |      - |         - |          NA | 
  */
 //BenchmarkRunner.Run<EnumStringVsBoxTests>();
+
+/*
+|               Method |                 dict |                 list |        Mean |      Error |     StdDev |      Median | Allocated |
+|--------------------- |--------------------- |--------------------- |------------:|-----------:|-----------:|------------:|----------:|
+| SelectFromDictionary | Syste(...)Item] [78] |                    ? |    52.60 ns |   1.089 ns |   3.211 ns |    53.45 ns |         - |
+| SelectFromDictionary | Syste(...)Item] [78] |                    ? |   133.47 ns |   5.535 ns |  16.321 ns |   140.83 ns |         - |
+| SelectFromDictionary | Syste(...)Item] [78] |                    ? |   169.81 ns |  19.604 ns |  57.804 ns |   137.16 ns |         - |
+| SelectFromDictionary | Syste(...)Item] [78] |                    ? |   260.37 ns |   5.149 ns |   7.218 ns |   259.81 ns |         - |
+|       SelectFromList |                    ? | Syste(...)Item] [59] |    65.83 ns |   3.057 ns |   9.014 ns |    69.64 ns |         - |
+|       SelectFromList |                    ? | Syste(...)Item] [59] |   330.12 ns |   7.816 ns |  23.046 ns |   338.38 ns |         - |
+|       SelectFromList |                    ? | Syste(...)Item] [59] | 1,304.24 ns |  25.749 ns |  51.424 ns | 1,315.20 ns |         - |
+|       SelectFromList |                    ? | Syste(...)Item] [59] | 5,051.22 ns | 130.427 ns | 384.568 ns | 5,244.63 ns |         - |
+ */
+BenchmarkRunner.Run<ListVsDictionaryTest>();
