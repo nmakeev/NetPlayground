@@ -3,8 +3,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 [MemoryDiagnoser]
-public partial class LocalizationManagerTest
+public class LocalizationManagerTest
 {
+    private static StringBuilder _stringBuilderForNaive;
+    private static StringBuilder _stringBuilderForSmart;
+
     [Benchmark(Baseline = true)]
     [ArgumentsSource(nameof(InputsWithDictionary))]
     public string ApplyFormat(string value, Dictionary<string, string> formatValues = null)
@@ -61,20 +64,80 @@ public partial class LocalizationManagerTest
         return value;
     }
 
-    private static StringBuilder _stringBuilder;
+ 
 
     [Benchmark]
     [ArgumentsSource(nameof(InputsWithPreparedPairs))]
     public string ApplyFormat_StringBuilder(string value, LocPair pair1, LocPair pair2, LocPair pair3)
     {
-        _stringBuilder ??= new StringBuilder();
-        _stringBuilder.Clear();
-        _stringBuilder.Append(value);
+        _stringBuilderForNaive ??= new StringBuilder();
+        _stringBuilderForNaive.Clear();
+        _stringBuilderForNaive.Append(value);
 
-        _stringBuilder.Replace(pair1.Key, pair1.Substitution);
-        _stringBuilder.Replace(pair2.Key, pair1.Substitution);
-        _stringBuilder.Replace(pair3.Key, pair1.Substitution);
-        return _stringBuilder.ToString();
+        _stringBuilderForNaive.Replace(pair1.Key, pair1.Substitution);
+        _stringBuilderForNaive.Replace(pair2.Key, pair1.Substitution);
+        _stringBuilderForNaive.Replace(pair3.Key, pair1.Substitution);
+        return _stringBuilderForNaive.ToString();
+    }
+
+    [Benchmark]
+    [ArgumentsSource(nameof(InputsWithPairs))]
+    public string ApplyFormat_Smart(string value, LocPair pair1, LocPair pair2, LocPair pair3)
+    {
+        _stringBuilderForSmart ??= new StringBuilder();
+        _stringBuilderForSmart.Clear();
+
+        for (var i = 0; i < value.Length - 1; i++)
+        {
+            if (value[i] == '$' && value[i + 1] == '{')
+            {
+                var end = value.IndexOf('}', i);
+                if (end == -1)
+                {
+                    //TODO: error
+                    return value;
+                }
+
+                var key = value.Substring(i + 2, end - i - 2);
+				Console.WriteLine(key);
+                var (result, pair) = Find(key, pair1, pair2, pair3);
+                if (result)
+                {
+                    _stringBuilderForSmart.Append(pair.Substitution);
+                }
+                else
+                {
+                    _stringBuilderForSmart.Append('$').Append('{').Append(key).Append('}');
+                }
+				i = end;
+            }
+            else
+            {
+                _stringBuilderForSmart.Append(value[i]);
+            }
+        }
+        
+        (bool, LocPair) Find(string key, LocPair pair1, LocPair pair2, LocPair pair3)
+        {
+            if (pair1.Key == key)
+            {
+                return (true, pair1);
+            }
+
+            if (pair2.Key == key)
+            {
+                return (true, pair2);
+            }
+
+            if (pair3.Key == key)
+            {
+                return (true, pair3);
+            }
+
+            return (false, pair1);
+        }
+
+        return _stringBuilderForSmart.ToString();
     }
 
     private string ReplaceNaive(string value, LocPair pair)

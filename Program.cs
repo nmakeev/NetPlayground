@@ -65,3 +65,16 @@ using NetPlayground.Tests;
 |               ApplyFormat | Your(...)rk}. [160] |                    ? |                    ? |                    ? | Syste(...)ring] [68] |   751.6 ns | 63.87 ns | 188.32 ns |   797.1 ns |  1.00 |    0.00 | 0.1211 |    1528 B |        1.00 |
  */
 //BenchmarkRunner.Run<LocalizationManagerTest>();
+
+
+/*
+|  Method |                  key |      Mean |     Error |    StdDev |   Gen0 | Allocated |
+|-------- |--------------------- |----------:|----------:|----------:|-------:|----------:|
+|  Concat |           0123456790 | 20.823 ns | 0.1210 ns | 0.1072 ns | 0.0076 |      96 B |
+| Builder |           0123456790 | 11.478 ns | 0.1178 ns | 0.1044 ns | 0.0038 |      48 B |
+|  Concat | AReal(...)gLong [25] | 20.826 ns | 0.1449 ns | 0.1284 ns | 0.0102 |     128 B |
+| Builder | AReal(...)gLong [25] | 12.537 ns | 0.2099 ns | 0.1860 ns | 0.0064 |      80 B |
+|  Concat |                   id | 19.711 ns | 0.1471 ns | 0.1228 ns | 0.0063 |      80 B |
+| Builder |                   id |  9.587 ns | 0.1110 ns | 0.1039 ns | 0.0025 |      32 B |
+ */
+BenchmarkRunner.Run<ConcatTest>();
