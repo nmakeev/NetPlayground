@@ -21,10 +21,18 @@ public class ConcatTest
 
     [Benchmark]    
     [ArgumentsSource("Keys")]
-    public string Builder(string key)
+    public string BuilderChars(string key)
     {
         _builder.Clear();
         return _builder.Append('$').Append('{').Append(key).Append('}').ToString();
+    }
+
+    [Benchmark]    
+    [ArgumentsSource("Keys")]
+    public string BuilderStringAndChars(string key)
+    {
+        _builder.Clear();
+        return _builder.Append("${").Append(key).Append('}').ToString();
     }
 
     public IEnumerable<object> Keys()

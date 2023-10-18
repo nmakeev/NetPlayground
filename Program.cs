@@ -77,4 +77,4 @@ using NetPlayground.Tests;
 |  Concat |                   id | 19.711 ns | 0.1471 ns | 0.1228 ns | 0.0063 |      80 B |
 | Builder |                   id |  9.587 ns | 0.1110 ns | 0.1039 ns | 0.0025 |      32 B |
  */
-BenchmarkRunner.Run<ConcatTest>();
+//BenchmarkRunner.Run<ConcatTest>();
