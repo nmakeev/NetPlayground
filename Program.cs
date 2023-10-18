@@ -78,3 +78,13 @@ using NetPlayground.Tests;
 | Builder |                   id |  9.587 ns | 0.1110 ns | 0.1039 ns | 0.0025 |      32 B |
  */
 //BenchmarkRunner.Run<ConcatTest>();
+
+
+/*
+|                 Method |             Argument |        Mean |     Error |    StdDev |   Gen0 |   Gen1 | Allocated |
+|----------------------- |--------------------- |------------:|----------:|----------:|-------:|-------:|----------:|
+|          TryParseEmoji | (scre(...)moji) [54] | 1,521.43 ns | 13.357 ns | 12.494 ns | 0.0362 |      - |     472 B |
+| TryParseEmojiGenerated | (scre(...)moji) [54] |   421.46 ns |  3.613 ns |  3.379 ns | 0.0372 | 0.0005 |     472 B |
+|    TryParseEmojiCustom | (scre(...)moji) [54] |    93.71 ns |  1.524 ns |  1.426 ns | 0.0159 | 0.0001 |     200 B |
+*/
+//BenchmarkRunner.Run<RegexpVsCustomTest>();
